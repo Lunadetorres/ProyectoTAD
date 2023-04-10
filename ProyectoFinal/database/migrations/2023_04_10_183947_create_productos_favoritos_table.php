@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('productos_favoritos', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('idUsuario')->references('id')->on('usuarios')->unsigned();
+            $table->foreignId('idProducto')->references('id')->on('productos')->unsigned();
             $table->timestamps();
         });
     }

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idUsuario')->references('id')->on('usuarios')->unsigned();
+            $table->String('estado');
+            $table->integer('cantidadTotal');
             $table->timestamps();
         });
     }

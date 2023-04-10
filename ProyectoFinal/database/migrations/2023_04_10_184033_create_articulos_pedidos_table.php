@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('articulos_pedidos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idPedido')->references('id')->on('pedidos')->unsigned();
+            $table->foreignId('idProducto')->references('id')->on('productos')->unsigned();
+            $table->integer('cantidad');
+            $table->float('precio');
             $table->timestamps();
+
         });
     }
 
