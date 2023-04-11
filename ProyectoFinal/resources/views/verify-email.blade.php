@@ -1,5 +1,5 @@
 
-@extends('auth.template')
+@extends('template')
 
 @section('content')
 <div class="container">

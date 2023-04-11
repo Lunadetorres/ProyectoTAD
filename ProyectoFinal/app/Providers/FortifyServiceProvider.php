@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LoginViewResponse;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -19,7 +21,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CreatesNewUsers::class, CreateNewUser::class);
     }
 
     /**
@@ -30,7 +32,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        // Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
@@ -43,12 +45,15 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::loginView(function(){
-            return view('auth.login');
+            return view('login');
         });
 
         Fortify::registerView(function(){
-            return view('auth.register');
+            return view('register');
         });
 
+        Fortify::requestPasswordResetLinkView(function (Request $request) {
+            return view('reset-password', ['request' => $request]);
+        });
     }
 }
