@@ -12,11 +12,11 @@
                 <div class="card-body">
                     <h5 class="card-title">Producto: {{ $producto->nombre }}</h5>
                     <p class="card-text">Descripcion: {{ $producto->descripcion }}</p>
-                    <p class="card-text">Precio: ${{ $producto->precio }}</p>
+                    <p class="card-text">Precio: {{ $producto->precio }}€</p>
                     <!-- <a href="#" class="btn btn-primary">Add cart</a> -->
                     <form action="{{ route('cart.add', $producto) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-primary">{{ __('Agregar al carrito') }}</button>
+                        <button type="submit" class="buttom-lila btn btn-primary text-dark ">{{ __('Agregar al carrito') }}</button>
                     </form>
                 </div>
             </div>

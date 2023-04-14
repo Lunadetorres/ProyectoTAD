@@ -51,7 +51,7 @@
             <input type="text" class="form-control" id="card-cvc" name="card-cvc" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit Payment</button>
+        <button type="submit" class="bg-white text-dark btn btn-primary">Submit Payment</button>
     </form>
 </div>
 @endsection

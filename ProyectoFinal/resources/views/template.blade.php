@@ -16,14 +16,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Styles -->
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
+    <style>
+        .body-lila{
+            background-color: plum;
+        }
+        .buttom-lila{
+            background-color: plum;
+        }
+    </style>
 </head>
 
-<body>
+<body class="body-lila">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Fortify') }}
+                    UPOCOSMETIC
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

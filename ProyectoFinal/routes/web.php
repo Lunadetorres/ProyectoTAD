@@ -21,7 +21,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Route::get('/productos', [ProductosController::class, 'index'])->name('productos');
