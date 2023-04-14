@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idUsuario',
         'nombreUsuario',
         'email',
@@ -16,6 +16,7 @@ class Usuario extends Model
         'nombre',
         'apellidos',
         'telefono',
-        'fechaNacimiento'
+        'fechaNacimiento',
+        'isAdmin'
     ];
 }
