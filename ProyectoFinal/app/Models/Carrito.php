@@ -8,12 +8,13 @@ use App\Models\usuario;
 
 class Carrito extends Model
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idCarrito',
         'idUsuario'
     ];
 
-    public function usuario(){
+    public function usuario()
+    {
         return $this->belongsTo(Usuario::class, 'idUsuario');
     }
 }

@@ -9,16 +9,17 @@ use App\Models\Producto;
 
 class ProductosFavoritos extends Model
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idUsuario',
         'idProducto'
     ];
 
-    public function usuario(){
+    public function usuario()
+    {
         return $this->belongsTo(Usuario::class, 'idUsuario');
     }
-    public function producto(){
+    public function producto()
+    {
         return $this->belongsTo(Producto::class, 'idProducto');
     }
-
 }
