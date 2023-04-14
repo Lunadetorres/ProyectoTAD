@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsAdmin
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user() && $request->user()->is_admin) {
+        // Check if the user is authenticated and is an admin
+        if ($request->user() && $request->user()->isAdmin) {
             return $next($request);
         }
 
-        return abort(403, 'Unauthorized action.');
+        // Redirect to login page
+        return redirect()->route('login');
     }
 }

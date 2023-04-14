@@ -9,7 +9,7 @@ use App\Models\Producto;
 
 class ArticulosPedido extends Model
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idArticulosPedido',
         'idPedido',
         'idProducto',
@@ -17,10 +17,12 @@ class ArticulosPedido extends Model
         'precio'
     ];
 
-    public function pedido(){
+    public function pedido()
+    {
         return $this->belongsTo(Pedido::class, 'idPedido');
     }
-    public function producto(){
+    public function producto()
+    {
         return $this->belongsTo(Producto::class, 'idProducto');
     }
 }

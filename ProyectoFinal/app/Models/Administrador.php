@@ -10,8 +10,7 @@ use App\Models\Usuario;
 require_once("Usuario.php");
 class Administrador extends Usuario
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idAdministrador',
     ];
-
 }

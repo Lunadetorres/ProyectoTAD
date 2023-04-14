@@ -27,7 +27,6 @@ class AdminController extends Controller
 
         $producto->save();
 
-
         return redirect()->route('create-product')->with('success', 'Product added successfully');
     }
 }

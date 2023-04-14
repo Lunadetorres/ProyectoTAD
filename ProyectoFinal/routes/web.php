@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,11 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
+
 Route::get('/reset-password', function () {
     return view('reset-password');
 })->name('password.update');
@@ -51,10 +57,6 @@ Route::get('/verify-email', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-Route::get('admin/crear-producto', [ProductosController::class, 'create'])->name('admin.crear-producto');
-
-Route::post('admin/store-producto', [ProductosController::class, 'store'])->name('admin.store-producto');
 
 Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
 
@@ -72,7 +74,7 @@ Route::get('/checkout/confirmation', [CheckoutController::class, 'confirmation']
 
 Route::get('/checkout/success{pedidoId}{totalPrice}', [CheckoutController::class, 'success'])->name('checkout.success');
 
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     Route::get('/admin/crear-producto', [AdminController::class, 'createProduct'])->name('crear-producto');
-//     Route::post('/admin/store-producto', [AdminController::class, 'storeProduct'])->name('store-producto');
-// });
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/crear-producto', [ProductosController::class, 'create'])->name('admin.crear-producto');
+    Route::post('admin/store-producto', [ProductosController::class, 'store'])->name('admin.store-producto');
+});

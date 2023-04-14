@@ -8,14 +8,15 @@ use App\Models\Usuario;
 
 class Pedido extends Model
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idPedido',
         'idUsuario',
         'estado',
         'cantidadTotal'
     ];
 
-    public function usuario(){
+    public function usuario()
+    {
         return $this->belongsTo(Usuario::class, 'idUsuario');
     }
 }

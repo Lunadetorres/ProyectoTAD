@@ -9,17 +9,19 @@ use App\Models\Producto;
 
 class ArticulosCarrito extends Model
 {
-    protected $fillable = [   
+    protected $fillable = [
         'idArticulosCarrito',
         'idCarrito',
         'idProducto',
         'cantidad'
     ];
 
-    public function carrito(){
+    public function carrito()
+    {
         return $this->belongsTo(Carrito::class, 'idCarrito');
     }
-    public function producto(){
+    public function producto()
+    {
         return $this->belongsTo(Producto::class, 'idProducto');
     }
 }
