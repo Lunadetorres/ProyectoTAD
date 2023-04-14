@@ -18,10 +18,8 @@ return new class extends Migration
             $table->String('nombre');
             $table->String('descripcion');
             $table->Float('precio');
-            $table->Boolean('stock');
             $table->String('imagenUrl');
             $table->String('categoria');
-            $table->String('descuento');
             $table->timestamps();
         });
     }
