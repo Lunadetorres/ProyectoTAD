@@ -22,7 +22,7 @@
             <tr>
                 <td><img src="{{ $cartItem['imagenUrl'] }}" class="img-fluid" alt="{{ $cartItem['nombre'] }}"></td>
                 <td>{{ $cartItem['nombre'] }}</td>
-                <td>${{ $cartItem['precio'] }}</td>
+                <td>{{ $cartItem['precio'] }}€</td>
                 <td>
                     <form action="{{ route('cart.update', $id) }}" method="POST">
                         @csrf
@@ -40,7 +40,7 @@
                     </form>
 
                 </td>
-                <td>${{ $cartItem['precio'] * $cartItem['cantidad'] }}</td>
+                <td>{{ $cartItem['precio'] * $cartItem['cantidad'] }}€</td>
                 <td>
                     <form action="{{ route('cart.remove', $id) }}" method="POST">
                         @csrf

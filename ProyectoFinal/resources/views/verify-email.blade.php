@@ -11,17 +11,17 @@
         @endif
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Email Verification') }}</div>
+                <div class="card-header">{{ __('Verificación de e-mail') }}</div>
 
                 <div class="card-body">
-                    <p>You must verify your email address. Please, check your email for a verification link</p>
+                    <p>Debes verificar tu e-mail</p>
                     <form method="POST" action="{{ route('verification.send') }}">
                         @csrf
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary" value="Resend">
-                                    {{ __('Resend Email') }}
+                                    {{ __('Reenviar Email') }}
                                 </button>
 
                             </div>

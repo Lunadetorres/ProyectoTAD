@@ -8,10 +8,10 @@
                 <div class="card-header">{{ __('Order Confirmation') }}</div>
 
                 <div class="card-body">
-                    <h5 class="card-title">{{ __('Thank you for your purchase!') }}</h5>
-                    <p class="card-text">{{ __('Your order has been successfully processed.') }}</p>
+                    <h5 class="card-title">{{ __('¡GRACIAS POR TU COMPRA!') }}</h5>
+                    <p class="card-text">{{ __('Tu pedido se ha realizado correctamente') }}</p>
                     <p class="card-text">{{ __('Order ID') }}: {{ $pedidoId }}</p>
-                    <p class="card-text">{{ __('Total amount') }}: ${{ $totalPrice }}</p>
+                    <p class="card-text">{{ __('Total') }}: ${{ $totalPrice }}</p>
                 </div>
             </div>
         </div>
