@@ -78,3 +78,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/crear-producto', [ProductosController::class, 'create'])->name('admin.crear-producto');
     Route::post('admin/store-producto', [ProductosController::class, 'store'])->name('admin.store-producto');
 });
+
+Route::get('/set_language/{lang}', [App\Http\Controllers\Controller::class, 'set_language'])->name('set_language');
+

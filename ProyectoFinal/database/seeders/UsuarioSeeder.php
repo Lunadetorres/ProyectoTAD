@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Usuario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Usuario extends Seeder
+class UsuarioSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,7 +23,8 @@ class Usuario extends Seeder
         'nombre'=>'Luna',
         'apellidos'=>'de Torres',
         'telefono'=>678549875,
-        'fechaNacimiento'=>'13/10/2000'
+        'fechaNacimiento'=>'13/10/2000',
+        'isAdmin'=>1
 
         ]);
 
@@ -34,8 +36,20 @@ class Usuario extends Seeder
             'nombre'=>'Jesus',
             'apellidos'=>'Sena',
             'telefono'=>689523654,
-            'fechaNacimiento'=>'13/02/1990'
-    
+            'fechaNacimiento'=>'13/02/1990',
+            'isAdmin'=>0
             ]);
+
+        Usuario::create( [   
+            'nombreUsuario'=>'Maria',
+            'email'=>'maria@gmail.com',
+            'password'=>'00001111',
+            'direccion'=>'C\Nueva',
+            'nombre'=>'María',
+            'apellidos'=>'Montes Perdidos',
+            'telefono'=>'666111666',
+            'fechaNacimiento'=>'12/12/1995',
+            'isAdmin'=>1
+        ]);    
     }
 }

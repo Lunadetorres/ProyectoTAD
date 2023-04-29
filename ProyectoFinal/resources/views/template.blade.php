@@ -39,6 +39,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Lenguaje
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="{{route('set_language',['es'])}}">{{__("Spanish")}}</a></li>
+                      <li><a class="dropdown-item" href="{{route('set_language',['en'])}}">{{__("English")}}</a></li>
+                    </ul>
+                </div>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'Product' => 'Producto',
-    'Description' => 'Descripción',
-    'Price' => 'Precio',
+    'titulo' => 'Tu cosmética online',
+    'login' => 'inicio de sesión',
+    'registro' => 'registro',
+    'Producto' => 'Producto',
+    'Descripción' => 'Descripción',
+    'Precio' => 'Precio',
 ];
