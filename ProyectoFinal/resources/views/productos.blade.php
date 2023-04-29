@@ -10,9 +10,9 @@
             <div class="card mb-4">
                 <img src="{{ $producto->imagenUrl }}" class="img-fluid mb-3" alt="{{ $producto->nombre }}">
                 <div class="card-body">
-                    <h5 class="card-title">Producto: {{ $producto->nombre }}</h5>
-                    <p class="card-text">Descripción: {{ $producto->descripcion }}</p>
-                    <p class="card-text">Precio: {{ $producto->precio }}€</p>
+                    <h5 class="card-title">@lang('messages.Producto'): {{ $producto->nombre }}</h5>
+                    <p class="card-text">@lang('messages.Descripción'): {{ $producto->descripcion }}</p>
+                    <p class="card-text">@lang('messages.Precio'): {{ $producto->precio }}€</p>
                     <!-- <a href="#" class="btn btn-primary">Add cart</a> -->
                     <form action="{{ route('cart.add', $producto) }}" method="POST">
                         @csrf
