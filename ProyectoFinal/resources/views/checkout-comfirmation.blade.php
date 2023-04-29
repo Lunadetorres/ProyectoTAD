@@ -43,7 +43,7 @@
             </table>
             <form action="{{ route('checkout.process') }}" method="POST">
                 @csrf
-                <button type="submit" class="bg-white text-dark btn btn-block">{{ __('Pagar') }}</button>
+                <button type="submit" class="bg-primary text-dark btn btn-block">{{ __('Pagar') }}</button>
             </form>
         </div>
     </div>
