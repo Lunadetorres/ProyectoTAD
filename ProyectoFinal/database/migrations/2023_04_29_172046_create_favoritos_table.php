@@ -6,19 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
-        Schema::table('usuarios', function (Blueprint $table) {
-            //$table->boolean('isAdmin')->default(false);
+        Schema::create('favoritos', function (Blueprint $table) {
+            $table->id();
+            $table->string('idProducto');
+            $table->string('email');
+            $table->timestamps();
         });
     }
+
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('favoritos');
     }
+    
 };

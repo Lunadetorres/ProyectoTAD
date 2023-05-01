@@ -39,16 +39,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Lenguaje
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="{{route('set_language',['es'])}}">{{__("Spanish")}}</a></li>
-                      <li><a class="dropdown-item" href="{{route('set_language',['en'])}}">{{__("English")}}</a></li>
-                    </ul>
-                </div>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -67,13 +57,19 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                            <a class="nav-link text-white" href="{{ route('logout') }}">{{ __('Logout') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/cart') }}">{{ __('Cart') }}</a>
+                            <a class="nav-link text-white" href="{{route('productos')}}">{{ __('Productos') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
+                            <a class="nav-link text-white" href="{{ url('/cart') }}">{{ __('Cart') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ url('/favoritos') }}">{{ __('favoritos') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ url('/dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
                         </li>
                         @endguest
                     </ul>
