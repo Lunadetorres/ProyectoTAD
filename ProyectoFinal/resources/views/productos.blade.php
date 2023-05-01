@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center mb-3" style="color:#88389c;">TU COSMÉTICA ONLINE</h1>
+    <h1 class="text-center mb-3" style="color:#88389c;">@lang('messages.titulo')TU COSMÉTICA ONLINE</h1>
     <div class="row ">
         @foreach ($productos as $producto)
-        
+
         <div class="col-sm-3 mb-5 border-0" >
             <div class="card border-0" style=" width:200px; " >
                 <img src="/images/{{ $producto->imagenUrl }}"  style="height: 200px; width:200px;" class="img-fluid mb-1" alt="{{ $producto->nombre }}">
