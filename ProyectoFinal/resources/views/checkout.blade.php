@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Checkout</h1>
+    <h1 class="text-center" style="color:#88389c;">Checkout</h1>
     <form method="POST" action="{{ route('checkout.process') }}">
         @csrf
         <div class="form-group col-lg-4 mb-3">
@@ -41,7 +41,7 @@
             <label for="card-cvc">CVC</label>
             <input type="text" class="form-control" id="card-cvc" name="card-cvc" required>
         </div>
-        <button type="submit" class="bg-primary text-white btn btn-primary ">
+        <button type="submit" class="bg btn btn-lila ">
             <div class="d-flex justify-content-center">
                 <p class="h5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
                     <path fill="#50D51A" d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>

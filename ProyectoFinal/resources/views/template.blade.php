@@ -57,13 +57,19 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                            <a class="nav-link text-white" href="{{ route('logout') }}">{{ __('Logout') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/cart') }}">{{ __('Cart') }}</a>
+                            <a class="nav-link text-white" href="{{route('productos')}}">{{ __('Productos') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
+                            <a class="nav-link text-white" href="{{ url('/cart') }}">{{ __('Cart') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ url('/favoritos') }}">{{ __('favoritos') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ url('/dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
                         </li>
                         @endguest
                     </ul>

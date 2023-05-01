@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FavoritosController;
 
 Route::get('/', function () {
     return redirect('/home');
@@ -28,6 +29,14 @@ Route::get('/', function () {
 Route::get('/productos', [ProductosController::class, 'index'])->name('productos');
 
 Route::get('/home', [ProductosController::class, 'index'])->name('productos');
+
+Route::get('/productos/edit/{id}', [ProductosController::class, 'edit'])->name('productos.editar');
+
+Route::post('/favoritos/add/{id}', [FavoritosController::class, 'addToFavoritos'])->name('favoritos.add');
+
+Route::get('/favoritos', [FavoritosController::class, 'index'])->name('favoritos.index');
+
+Route::post('/favoritos/destroy/{id}', [FavoritosController::class, 'destroy'])->name('favoritos.destroy');
 
 Route::get('/register', function () {
     return view('register');
@@ -57,6 +66,8 @@ Route::get('/verify-email', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
 
 Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
 
