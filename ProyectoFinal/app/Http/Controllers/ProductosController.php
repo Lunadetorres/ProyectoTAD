@@ -79,7 +79,7 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        $producto=Producto::findOrFail($id);
+        $producto = Producto::findOrFail($id);
         return view('mostrarProducto', compact('producto'));
     }
 

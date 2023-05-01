@@ -1,4 +1,3 @@
-
 @extends('template')
 
 @section('content')

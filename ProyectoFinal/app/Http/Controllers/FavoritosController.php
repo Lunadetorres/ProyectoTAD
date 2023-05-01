@@ -11,24 +11,24 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoritosController extends Controller
 {
-    
-    public function addToFavoritos($id)
-    { 
-        $email = Auth::user()-> email;
-        $existe = favoritos::where('idProducto','=',$id)->where('email','=', $email)->get();
 
-        if($existe->count() == 0){
-            $email = Auth::user()-> email;
+    public function addToFavoritos($id)
+    {
+        $email = Auth::user()->email;
+        $existe = favoritos::where('idProducto', '=', $id)->where('email', '=', $email)->get();
+
+        if ($existe->count() == 0) {
+            $email = Auth::user()->email;
             $listaFavoritos =
-            $favoritos = new favoritos();
-            $favoritos -> idProducto = $id;
-            $favoritos -> email = $email;
-            $favoritos -> save();
+                $favoritos = new favoritos();
+            $favoritos->idProducto = $id;
+            $favoritos->email = $email;
+            $favoritos->save();
             return redirect()->back()->with('success', 'Producto agregado a favoritos.');
-        }else{
-            return redirect()->back()->with('fail', 'Producto ya existe en favoritos.');    
+        } else {
+            return redirect()->back()->with('fail', 'Producto ya existe en favoritos.');
         }
-        
+
         /**
          * return redirect()->route('favoritos.index');
          */
@@ -41,9 +41,9 @@ class FavoritosController extends Controller
     public function index()
     {
         $email = Auth::user()->email;
-        $idProductos = favoritos::select('idProducto')->where('email','=',$email)->distinct()->get()->pluck('idProducto')->toArray();
-        $Productosfavoritos = Producto::whereIn('id',$idProductos)->get();
-        return view('favoritos', compact('Productosfavoritos'));        
+        $idProductos = favoritos::select('idProducto')->where('email', '=', $email)->distinct()->get()->pluck('idProducto')->toArray();
+        $Productosfavoritos = Producto::whereIn('id', $idProductos)->get();
+        return view('favoritos', compact('Productosfavoritos'));
     }
 
     /**
@@ -108,9 +108,9 @@ class FavoritosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
-        $idfavoritos = favoritos::select('id')->where('idProducto','=',$id)->get();        
+    {
+        $idfavoritos = favoritos::select('id')->where('idProducto', '=', $id)->get();
         favoritos::destroy($idfavoritos);
-        return redirect()->back()->with('success','Borrado producto de favoritos con éxito');
+        return redirect()->back()->with('success', 'Borrado producto de favoritos con éxito');
     }
 }

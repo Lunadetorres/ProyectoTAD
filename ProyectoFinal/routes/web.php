@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\FavoritosController;
 
 Route::get('/', function () {
@@ -67,7 +68,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
+Route::post('/language/{language}', [LanguageController::class, 'changeLanguage'])->name('language.change');
 
 Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
 
