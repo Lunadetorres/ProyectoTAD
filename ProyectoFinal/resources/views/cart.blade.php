@@ -29,13 +29,8 @@
                         @method('POST')
                         <input type="hidden" name="_method" value="POST">
                         <div class="input-group mb-3" style="max-width: 120px;">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon1">-</button>
-                            </div>
+
                             <input type="number" name="quantity" value="{{ $cartItem['cantidad'] }}" class="form-control text-center" min="1">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">+</button>
-                            </div>
                         </div>
                     </form>
 
@@ -63,8 +58,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Total</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Productos: {{ $totalItems }}</h6>
-                    <h6 class="card-subtitle h1 mb-2 ">Precio total: ${{ $totalPrice }}</h6>
-                    <a href="{{ route('checkout.index') }}" class="buttom btn btn-lila">{{ __('Comprar') }}</a>
+                    <h6 class="card-subtitle h1 mb-2 ">Precio total: {{ $totalPrice }}€</h6>
+                    <a href="{{ route('checkout.index') }}" class="buttom btn btn-lila"  style="background-color:#88389c;">{{ __('Comprar') }}</a>
                 </div>
             </div>
         </div>
