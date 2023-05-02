@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registro') }}</div>
+                <div class="card-header text-white"  style="background-color:#88389c;">{{ __('Registrar') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group row mb-3">
-                            <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('Direccion') }}</label>
+                            <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('Dirección') }}</label>
 
                             <div class="col-md-6">
                                 <input id="direccion" type="text" class="form-control @error('direccion') is-invalid @enderror" name="direccion" value="{{ old('direccion') }}" required autocomplete="direccion" autofocus>
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="form-group row mb-3">
-                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
 
                             <div class="col-md-6">
                                 <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono" autofocus>
@@ -118,7 +118,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="buttom-primary text-dark btn btn-primary">
+                                <button type="button " class="btn text-white"  style="background-color:#88389c; ">
                                     {{ __('Registrar') }}
                                 </button>
                             </div>

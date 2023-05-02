@@ -1,1 +1,9 @@
-
+{
+    "Login":"Acceso",
+    "Register":"Registrar",
+    "Logout":"Cerrar sesión",
+    "E-mail":"Correo electrónico",
+    "Remember me":"Recordarme",
+    "¿Has olvidado tu contraseña?":"¿Have you forgotten your password?",
+    "":""
+}

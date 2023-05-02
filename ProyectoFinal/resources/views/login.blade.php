@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header body-lila">{{ __('Login') }}</div>
+                <div class="card-header body-lila">{{ __('Acceso') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
                             <div class="col-md-6 ">
                                 <input id="email" type="email" class=" form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
@@ -46,14 +46,13 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                               <button type="submit" class="btn btn-lila ">
-                                    {{ __('Login') }}
+                               <button type="button " class="btn text-white"  style="background-color:#88389c; ">
+                                    {{ __('Acceso') }}
                                 </button>
                                 @if (Route::has('password.request'))
-                                   <a class=" btn btn-lila" href="{{ route('password.request') }}">
-
+                                    <button type="button " href="{{ route('password.request') }}" class="btn text-white"  style="background-color:#88389c; ">
                                         {{ __('¿Has olvidado tu contraseña?') }}
-                                    </a>
+                                    </button>
                                 @endif
                             </div>
                         </div>

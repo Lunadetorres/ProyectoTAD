@@ -1,1 +1,14 @@
+{
+    "Acceso":"Login",
+    "Registrar":"Register",
+    "Cerrar sesión":"Logout",
+    "Correo electrónico":"E-mail",
+    "Recordarme":"Remember me",
+    "¿Has olvidado tu contraseña?":"¿Have you forgotten your password?",
+    "Nombre Usuario":"User name",
+    "Dirección":"Address",
+    "Nombre":"Name",
+    "Apellidos":"Surnames",
+    "Teléfono":"Phone"
 
+}
