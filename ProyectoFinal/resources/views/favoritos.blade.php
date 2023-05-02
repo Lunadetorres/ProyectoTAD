@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center mb-3" style="color:#88389c;">TUS PRODUCTOS FAVORITOSE</h1>
+    <h1 class="text-center mb-3" style="color:#88389c;">TUS PRODUCTOS FAVORITOS</h1>
     <div class="row ">
         @foreach ($Productosfavoritos as $productosfavoritos)
         <div class="col-sm-3 mb-5 border-0">
