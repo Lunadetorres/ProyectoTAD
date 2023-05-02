@@ -75,6 +75,14 @@ Route::get('/dashboard', function () {
 
 Route::post('/language/{language}', [LanguageController::class, 'changeLanguage'])->name('language.change');
 
+Route::get('/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
+
+    return view('welcome');
+});
+
 Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
 
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
@@ -93,5 +101,5 @@ Route::get('/checkout/success{pedidoId}{totalPrice}', [CheckoutController::class
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/crear-producto', [ProductosController::class, 'create'])->name('admin.crear-producto');
-    Route::post('admin/store-producto', [ProductosController::class, 'store'])->name('admin.store-producto');
+    Route::get('admin/store-producto', [ProductosController::class, 'store'])->name('admin.store-producto');
 });

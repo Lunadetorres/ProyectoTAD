@@ -76,11 +76,10 @@
                             <a class="nav-link text-white" href="{{ url('/Dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">
-                            <select id="language-selector">
+                            <select class="form-control" id="language-selector">
                                 <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
                                 <option value="es" {{ app()->getLocale() === 'es' ? 'selected' : '' }}>Español</option>
                                 <option value="pl" {{ app()->getLocale() === 'pl' ? 'selected' : '' }}>Polski</option>
-                                <!-- Add more languages as needed -->
                             </select>
                         </li>
 
@@ -127,8 +126,6 @@
     </div>
 </footer>
 
-</html>
-
 <script>
     document.getElementById('language-selector').addEventListener('change', function() {
         const selectedLanguage = this.value;
@@ -147,3 +144,5 @@
         });
     });
 </script>
+
+</html>

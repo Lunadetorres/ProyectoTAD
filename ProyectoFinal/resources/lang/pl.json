@@ -1,1 +1,24 @@
+{
+    "Acceso":"Login",
+    "Registrar":"rejestracja",
+    "Cerrar sesión":"Wyloguj",
+    "Correo electrónico":"E-mail",
+    "Recordarme":"Zapamiętaj mnie",
+    "¿Has olvidado tu contraseña?":"Zapomniałeś hasła?",
+    "Nombre Usuario":"Użytkownik",
+    "Dirección":"Address",
+    "Nombre":"Imie",
+    "Apellidos":"Nazwisko",
+    "Teléfono":"Numer telefonu",
+    "Comprar":"Kup",
+    "Pagar":"Zapłać",
+    "Imagen":"Obraz",
+    "Producto":"Produkt",
+    "Precio unitario":"Cena za sztukę",
+    "Cantidad":"Ilość",
+    "Precio total":"Cena całkowita",
+    "Productos":"Produkty",
+    "El carrito esta vacio":"KOszyk jest pusty",
+    "TU COSMÉTICA ONLINE":"Twój sklep z kosmetykami"
 
+}

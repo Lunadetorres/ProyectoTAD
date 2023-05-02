@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center mb-3" style="color:#88389c;">TU COSMÉTICA ONLINE</h1>
+    <h1 class="text-center mb-3" style="color:#88389c;">{{ __('TU COSMÉTICA ONLINE') }}</h1>
     <div class="row ">
         <div class="col-sm-6 mb-5 border-0">
             <img src="{{ $producto->imagenUrl }}" style="height: 400px; width:400px;" class="rounded mx-auto d-block" alt="{{ $producto->nombre }}">

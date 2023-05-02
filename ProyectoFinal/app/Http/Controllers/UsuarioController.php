@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-Use App\Models\Usuario;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
@@ -19,6 +19,4 @@ class UsuarioController extends Controller
         Usuario::insert($datosUsuario);
         return redirect('productos');
     }
-
-   
 }
