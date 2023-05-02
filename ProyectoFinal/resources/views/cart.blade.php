@@ -59,7 +59,8 @@
                     <h5 class="card-title">Total</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Productos: {{ $totalItems }}</h6>
                     <h6 class="card-subtitle h1 mb-2 ">Precio total: {{ $totalPrice }}€</h6>
-                    <a href="{{ route('checkout.index') }}" class="buttom btn btn-lila"  style="background-color:#88389c;">{{ __('Comprar') }}</a>
+                    <a href="{{ route('checkout.index') }}" class="buttom btn text-white"  style="background-color:#88389c;">{{ __('Comprar') }}</a>
+                    
                 </div>
             </div>
         </div>

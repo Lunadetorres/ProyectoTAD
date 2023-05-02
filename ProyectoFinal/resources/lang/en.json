@@ -9,6 +9,15 @@
     "Dirección":"Address",
     "Nombre":"Name",
     "Apellidos":"Surnames",
-    "Teléfono":"Phone"
+    "Teléfono":"Phone",
+    "Comprar":"Buy",
+    "Pagar":"Pay",
+    "Imagen":"Image",
+    "Producto":"Product",
+    "Precio unitario":"Unit price",
+    "Cantidad":"Amount",
+    "Precio total":"Total price",
+    "Productos":"Products",
+    "El carrito esta vacio":"The cart is empty"
 
 }

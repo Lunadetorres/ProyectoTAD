@@ -5,5 +5,18 @@
     "E-mail":"Correo electrónico",
     "Remember me":"Recordarme",
     "¿Has olvidado tu contraseña?":"¿Have you forgotten your password?",
-    "":""
+    "User name":"Nombre name",
+    "Address":"Dirección",
+    "Name":"Nombre",
+    "Surnames":"Apellidos",
+    "Phone":"Teléfono",
+    "Buy":"Comprar",
+    "Pay":"Pagar",
+    "Image":"Imagen",
+    "ProductProducto":"Producto",
+    "Unit price":"Precio unitario",
+    "Amount":"Cantidad",
+    "Total price":"Precio total",
+    "Products":"Productos",
+    "The cart is empty":"El carrito esta vacio"
 }

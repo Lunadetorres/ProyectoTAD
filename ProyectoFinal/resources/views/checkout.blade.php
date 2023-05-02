@@ -41,13 +41,13 @@
             <label for="card-cvc">CVC</label>
             <input type="text" class="form-control" id="card-cvc" name="card-cvc" required>
         </div>
-        <button type="submit" class="bg btn btn-lila ">
+        <button type="submit" class="bg btn text-white"  style="background-color:#88389c; ">
             <div class="d-flex justify-content-center">
                 <p class="h5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
                         <path fill="#50D51A" d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                         <path fill="#50D51A" d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
                     </svg>
-                    Pagar</p>
+                    {{ __('Pagar') }}</p>
             </div>
         </button>
     </form>

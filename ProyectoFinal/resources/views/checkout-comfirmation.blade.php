@@ -43,7 +43,9 @@
             </table>
             <form action="{{ route('checkout.process') }}" method="POST">
                 @csrf
-                <button type="submit" class="bg btn btn-lila btn-block">{{ __('Pagar') }}</button>
+                <button href="{{ route('checkout.index') }}" type="button " class="btn btn-block text-white"  style="background-color:#88389c; ">
+                    {{ __('Pagar') }}
+                </button>
             </form>
         </div>
     </div>
