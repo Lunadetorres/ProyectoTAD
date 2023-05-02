@@ -75,7 +75,7 @@
                         <li class="nav-item">
                             <select id="language-selector">
                                 <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
-                                <option value="es" {{ app()->getLocale() === 'es' ? 'selected' : '' }}>Espanol</option>
+                                <option value="es" {{ app()->getLocale() === 'es' ? 'selected' : '' }}>Español</option>
                                 <option value="pl" {{ app()->getLocale() === 'pl' ? 'selected' : '' }}>Polski</option>
                                 <!-- Add more languages as needed -->
                             </select>
