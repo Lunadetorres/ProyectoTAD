@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+                            <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Categoría') }}</label>
 
                             <div class="col-md-6">
                                 <input id="categoria" type="text" class="form-control @error('categoria') is-invalid @enderror" name="categoria" value="{{ old('categoria') }}" required autofocus>
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('Descripción') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" required>{{ old('descripcion') }}</textarea>
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="precio" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
+                            <label for="precio" class="col-md-4 col-form-label text-md-right">{{ __('Precio') }}</label>
 
                             <div class="col-md-6">
                                 <input id="precio" type="number" step="0.01" class="form-control @error('precio') is-invalid @enderror" name="precio" value="{{ old('precio') }}" required>

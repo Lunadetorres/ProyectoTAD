@@ -22,6 +22,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\FavoritosController;
+use App\Http\Controllers\UsuarioController;
 
 Route::get('/', function () {
     return redirect('/home');
@@ -38,6 +39,10 @@ Route::post('/favoritos/add/{id}', [FavoritosController::class, 'addToFavoritos'
 Route::get('/favoritos', [FavoritosController::class, 'index'])->name('favoritos.index');
 
 Route::post('/favoritos/destroy/{id}', [FavoritosController::class, 'destroy'])->name('favoritos.destroy');
+
+Route::get('/usuario', [UsuarioController::class, 'index'])->name('perfil.index');
+
+Route::post('/usuario/store', [UsuarioController::class, 'store'])->name('usuario.store');
 
 Route::get('/register', function () {
     return view('register');
