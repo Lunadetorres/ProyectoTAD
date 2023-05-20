@@ -4,7 +4,14 @@
 
 <div class="container">
     <h1 class="text-center mb-3" style="color:#88389c;">{{ __('TU COSMÉTICA ONLINE') }}</h1>
-    <div class="row ">
+        
+        @if(session()->has('success'))
+            <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+        @endif
+        @if(session()->has('fail'))
+            <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+        @endif
+        <div class="row ">
         @foreach ($productos as $producto)
         <div class="col-sm-3 mb-5 border-0">
             <div class="card border-0" style=" width:200px; ">

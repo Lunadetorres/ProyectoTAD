@@ -9,12 +9,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('usuario.store') }}">
                         @csrf
-
+                        {{method_field('PATCH')}}
                         <div class="form-group row mb-3">
                             <label for="nombreUsuario" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Usuario') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nombreUsuario" type="text" class="form-control @error('nombreUsuario') is-invalid @enderror" name="nombreUsuario" value="{{ old('nombreUsuario') }}" required autofocus>
+                                <input id="nombreUsuario" type="text" class="form-control @error('nombreUsuario') is-invalid @enderror" name="nombreUsuario" value="{{$Usuario->nombreUsuario}}">
                                 
                                 @error('nombreUsuario')
                                 <span class="invalid-feedback" role="alert">

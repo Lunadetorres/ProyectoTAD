@@ -19,14 +19,13 @@ class FavoritosController extends Controller
 
         if ($existe->count() == 0) {
             $email = Auth::user()->email;
-            $listaFavoritos =
-                $favoritos = new favoritos();
+            $favoritos = new favoritos();
             $favoritos->idProducto = $id;
             $favoritos->email = $email;
             $favoritos->save();
-            return redirect()->back()->with('success', 'Producto agregado a favoritos.');
+            return redirect()->back()->with('success', 'Producto agregado a favoritos');
         } else {
-            return redirect()->back()->with('fail', 'Producto ya existe en favoritos.');
+            return redirect()->back()->with('fail', 'Producto ya existe en favoritos');
         }
 
         /**
