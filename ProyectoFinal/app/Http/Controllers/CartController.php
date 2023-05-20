@@ -50,7 +50,7 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Producto agregado al carrito.');
+        return redirect()->back()->with('success', 'El producto se añadió al carrito de compra');
     }
 
     public function index()
@@ -85,7 +85,7 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'El producto ha sido removido del carrito');
+        return redirect()->back()->with('success', 'El producto ha sido eliminado del carrito');
     }
 
     public function cart()
