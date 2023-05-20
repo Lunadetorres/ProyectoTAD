@@ -55,7 +55,7 @@ class ProductosController extends Controller
             'descuento' => $request->descuento ?? '0',
         ]);
 
-        // $producto->save();
+        $producto->save();
 
         return redirect()->route('productos')->with('success', 'Product added successfully.');
     }
