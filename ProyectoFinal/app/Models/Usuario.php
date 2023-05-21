@@ -16,7 +16,6 @@ class Usuario extends Model
         'nombre',
         'apellidos',
         'telefono',
-        'fechaNacimiento',
-        'isAdmin'
+        'fechaNacimiento'
     ];
 }

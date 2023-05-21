@@ -47,8 +47,7 @@ class CreateNewUser implements CreatesNewUsers
             'nombre' => $input['nombre'],
             'apellidos' => $input['apellidos'],
             'telefono' => $input['telefono'],
-            'fechaNacimiento' => $user->created_at,
-            'isAdmin' => false
+            'fechaNacimiento' => $user->created_at
         ]);
 
         return $user;

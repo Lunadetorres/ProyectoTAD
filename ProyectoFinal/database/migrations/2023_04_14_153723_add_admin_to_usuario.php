@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('usuarios', function (Blueprint $table) {
-            $table->boolean('isAdmin')->default(false);
         });
     }
     public function down()
