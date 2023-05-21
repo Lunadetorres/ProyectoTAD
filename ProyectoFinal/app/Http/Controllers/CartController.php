@@ -135,7 +135,7 @@ class CartController extends Controller
 
         $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get()->first();
 
-        if ($cart->count() == 1) {
+        if ($cart != null && $cart->count() == 1) {
             $cartItems = ArticulosCarrito::where('idCarrito', '=', $cart->id)->get()->toArray();
         } else {
             $cartItems = [];
