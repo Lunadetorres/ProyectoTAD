@@ -23,7 +23,6 @@ return new class extends Migration
             $table->String('apellidos');
             $table->String('telefono');
             $table->String('fechaNacimiento');
-            $table->boolean('isAdmin')->default(false);
             $table->timestamps();
         });
     }
