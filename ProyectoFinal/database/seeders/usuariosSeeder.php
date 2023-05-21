@@ -43,7 +43,7 @@ class usuariosSeeder extends Seeder
             Usuario::create( [   
                 'nombreUsuario'=>'Maria',
                 'email'=>'maria@gmail.com',
-                'password'=>'00001111',
+                'password'=>bcrypt(00001111),
                 'direccion'=>'C\Nueva',
                 'nombre'=>'María',
                 'apellidos'=>'Montes Perdidos',
