@@ -3,8 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Carrito de compras</h1>
-    @if(session('cart') && count(session('cart')) > 0)
-    <span class="badge badge-pill badge-primary">{{ count(session('cart')) }}</span>
+    <span class="badge badge-pill badge-primary">{{ count($products) }}</span>
 
     <table class="table">
         <thead>
@@ -18,26 +17,30 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($cartItems as $id => $cartItem)
-            <tr>
-                <td><img src="{{ $cartItem['imagenUrl'] }}" class="img-fluid" style="height: 200px; width:200px;" alt="{{ $cartItem['nombre'] }}"></td>
-                <td>{{ $cartItem['nombre'] }}</td>
-                <td>{{ $cartItem['precio'] }}€</td>
+            @for($i = 0; $i < count($cartItems); $i++) <tr>
+                <td><img src="{{ $products[$i]['imagenUrl'] }}" class="img-fluid" style="height: 200px; width:200px;" alt="{{ $products[$i]['nombre'] }}"></td>
+                <td>{{ $products[$i]['nombre'] }}</td>
+                <td>{{ $products[$i]['precio'] }}€</td>
                 <td>
-                    <form action="{{ route('cart.update', $id) }}" method="POST">
+                    <form action="{{ route('cart.update', $cartItems[$i]['id']) }}" method="POST">
                         @csrf
                         @method('POST')
                         <input type="hidden" name="_method" value="POST">
                         <div class="input-group mb-3" style="max-width: 120px;">
-
-                            <input type="number" name="quantity" value="{{ $cartItem['cantidad'] }}" class="form-control text-center" min="1">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon1">-</button>
+                            </div>
+                            <input type="number" name="quantity" value="{{ $cartItems[$i]['cantidad'] }}" class="form-control text-center" min="1">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">+</button>
+                            </div>
                         </div>
                     </form>
 
                 </td>
-                <td>{{ $cartItem['precio'] * $cartItem['cantidad'] }}€</td>
+                <td>{{ $products[$i]['precio'] * $cartItems[$i]['cantidad'] }}€</td>
                 <td>
-                    <form action="{{ route('cart.remove', $id) }}" method="POST">
+                    <form action="{{ route('cart.remove', $cartItems[$i]['id']) }}" method="POST">
                         @csrf
                         @method('POST')
                         <button type="submit" class="btn btn-danger">
@@ -47,8 +50,9 @@
                         </button>
                     </form>
                 </td>
-            </tr>
-            @endforeach
+                </tr>
+
+                @endfor
         </tbody>
     </table>
 
@@ -59,17 +63,12 @@
                     <h5 class="card-title">Total</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Productos: {{ $totalItems }}</h6>
                     <h6 class="card-subtitle h1 mb-2 ">Precio total: {{ $totalPrice }}€</h6>
-                    <a href="{{ route('checkout.index') }}" class="buttom btn text-white"  style="background-color:#88389c;">{{ __('Comprar') }}</a>
-                    
+                    <a href="{{ route('checkout.index') }}" class="buttom btn text-white" style="background-color:#88389c;">{{ __('Comprar') }}</a>
+
                 </div>
             </div>
         </div>
     </div>
 
-    @else
-    <div class="alert alert-warning" role="alert">
-        {{ __('El carrito esta vacio') }}
-    </div>
-    @endif
 </div>
 @endsection

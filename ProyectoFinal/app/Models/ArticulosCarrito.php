@@ -10,7 +10,6 @@ use App\Models\Producto;
 class ArticulosCarrito extends Model
 {
     protected $fillable = [
-        'idArticulosCarrito',
         'idCarrito',
         'idProducto',
         'cantidad'

@@ -6,56 +6,86 @@ use Illuminate\Http\Request;
 
 use App\Models\Producto;
 use App\Models\Carrito;
+use App\Models\ArticulosCarrito;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function addToCart(Request $request, Producto $product)
     {
-        $cart = session()->get('cart');
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
+        }
+
+        $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get();
 
         // If the cart is empty, create a new one
-        if (!$cart) {
-            $cart = [
-                $product->id => [
-                    "nombre" => $product->nombre,
-                    "productId" => $product->id,
-                    "cantidad" => 1,
-                    "precio" => $product->precio,
-                    "imagenUrl" => $product->imagenUrl,
-                ]
-            ];
+        if ($cart->count() == 0) {
+            $userCart = new Carrito();
+            $userCart->idUsuario = $userId;
+            $userCart->save();
+        }
+
+        $cart = Carrito::where('idUsuario', '=', $userId)->get()->first();
+
+
+        $productsInCard = ArticulosCarrito::where('idCarrito', '=', $cart->id)->where('idProducto', '=', $product->id)->get();
+
+        if ($productsInCard->count() <= 1) {
+            $cantidad = 1;
+            if ($productsInCard->count() == 1) {
+                $cantidad = $productsInCard[0]->cantidad;
+                $cantidad++;
+                $productsInCard[0]->cantidad = $cantidad;
+                $productsInCard[0]->save();
+                session()->put('cart', $cart);
+
+                return redirect()->back()->with('success', 'El producto se añadió al carrito de compra');
+            }
+            $productsInCardNew = new ArticulosCarrito();
+            $productsInCardNew->idProducto = $product->id;
+            $productsInCardNew->idCarrito = $cart->id;
+            $productsInCardNew->cantidad = $cantidad;
+            $productsInCardNew->save();
 
             session()->put('cart', $cart);
 
-            return redirect()->back()->with('success', 'Producto agregado al carrito.');
+            return redirect()->back()->with('success', 'El producto se añadió al carrito de compra');
+        } else {
+            return redirect()->back()->with('fail', 'Producto ya existe en carrito');
         }
-
-        // If the product is already in the cart, increase the quantity
-        if (isset($cart[$product->id])) {
-            $cart[$product->id]['cantidad']++;
-
-            session()->put('cart', $cart);
-
-            return redirect()->back()->with('success', 'Producto agregado al carrito.');
-        }
-
-        // If the product is not in the cart, add it with a quantity of 1
-        $cart[$product->id] = [
-            "nombre" => $product->nombre,
-            "productId" => $product->id,
-            "cantidad" => 1,
-            "precio" => $product->precio,
-            "imagenUrl" => $product->imagenUrl,
-        ];
-
-        session()->put('cart', $cart);
-
-        return redirect()->back()->with('success', 'El producto se añadió al carrito de compra');
     }
 
     public function index()
     {
-        $cartItems = session()->get('cart');
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
+        }
+
+        $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get();
+
+        // If the cart is empty, create a new one
+        if ($cart->count() == 0) {
+            $cartItems = [];
+        } else {
+            $cartItems = ArticulosCarrito::where('idCarrito', '=', $cart->id)->get()->toArray();
+        }
 
         if (!$cartItems) {
             $cartItems = [];
@@ -66,31 +96,50 @@ class CartController extends Controller
 
     public function update($cartItemId, Request $request)
     {
-        $cart = session()->get('cart');
+        $cartItem = ArticulosCarrito::where('id', '=', $cartItemId)->first();
 
-        if (isset($cart[$cartItemId])) {
-            $cart[$cartItemId]['cantidad'] = $request->quantity;
-            session()->put('cart', $cart);
+        if ($cartItem) {
+            $cartItem->cantidad = $request->quantity;
+            $cartItem->save();
         }
 
-        return redirect()->route('cart.index');
+        return redirect()->back()->with('success', 'Updated');
     }
 
     public function remove($cartItemId)
     {
-        $cart = session()->get('cart');
+        $cartItem = ArticulosCarrito::where('id', '=', $cartItemId)->first();
 
-        if (isset($cart[$cartItemId])) {
-            unset($cart[$cartItemId]);
-            session()->put('cart', $cart);
+        if ($cartItem) {
+            $cartItem->delete();
+
+            return redirect()->back()->with('success', 'El producto ha sido eliminado del carrito');
+        } else {
+            return redirect()->back()->with('failed', 'El producto no ha sido eliminado del carrito');
         }
-
-        return redirect()->back()->with('success', 'El producto ha sido eliminado del carrito');
     }
 
     public function cart()
     {
-        $cartItems = session()->get('cart');
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
+        }
+
+        $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get()->first();
+
+        if ($cart->count() == 1) {
+            $cartItems = ArticulosCarrito::where('idCarrito', '=', $cart->id)->get()->toArray();
+        } else {
+            $cartItems = [];
+        }
 
         if (!$cartItems) {
             $cartItems = [];
@@ -98,12 +147,18 @@ class CartController extends Controller
 
         $totalItems = 0;
         $totalPrice = 0;
+        $products = [];
 
         foreach ($cartItems as $item) {
+            $product = Producto::where('id', '=', $item['idProducto'])->first();
+            array_push($products, $product);
+            // dd($product);
             $totalItems += $item['cantidad'];
-            $totalPrice += $item['cantidad'] * $item['precio'];
+            $totalPrice += $item['cantidad'] * $product->precio;
         }
 
-        return view('cart', compact('cartItems', 'totalItems', 'totalPrice'));
+        // dd($totalItems, $totalPrice);
+
+        return view('cart', compact('cartItems', 'totalItems', 'totalPrice', 'products'));
     }
 }

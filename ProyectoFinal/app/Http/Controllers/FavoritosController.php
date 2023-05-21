@@ -14,14 +14,24 @@ class FavoritosController extends Controller
 
     public function addToFavoritos($id)
     {
-        $email = Auth::user()->email;
-        $existe = favoritos::where('idProducto', '=', $id)->where('email', '=', $email)->get();
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
+        }
+
+        $existe = favoritos::where('idUsuario', '=', $userId)->where('idProducto', '=', $id)->get();
 
         if ($existe->count() == 0) {
-            $email = Auth::user()->email;
             $favoritos = new favoritos();
             $favoritos->idProducto = $id;
-            $favoritos->email = $email;
+            $favoritos->idUsuario = $userId;
             $favoritos->save();
             return redirect()->back()->with('success', 'Producto agregado a favoritos');
         } else {
@@ -39,8 +49,8 @@ class FavoritosController extends Controller
      */
     public function index()
     {
-        $email = Auth::user()->email;
-        $idProductos = favoritos::select('idProducto')->where('email', '=', $email)->distinct()->get()->pluck('idProducto')->toArray();
+        $id = Auth::user()->id;
+        $idProductos = favoritos::select('idProducto')->where('idUsuario', '=', $id)->distinct()->get()->pluck('idProducto')->toArray();
         $Productosfavoritos = Producto::whereIn('id', $idProductos)->get();
         return view('favoritos', compact('Productosfavoritos'));
     }
@@ -108,7 +118,9 @@ class FavoritosController extends Controller
      */
     public function destroy($id)
     {
-        $idfavoritos = favoritos::select('id')->where('idProducto', '=', $id)->get();
+        $userId = Auth::user()->id;
+
+        $idfavoritos = favoritos::select('id')->where('idProducto', '=', $id)->where('idUsuario', '=', $userId)->get();
         favoritos::destroy($idfavoritos);
         return redirect()->back()->with('success', 'Borrado producto de favoritos con éxito');
     }

@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-md body-lila  shadow-sm">
             <div class="container">
                 <div>
-                    <img src="images/LOGO.png" class="rounded float-start m-1" style="height: 45px; width:45px;">   
+                    <img src="images/LOGO.png" class="rounded float-start m-1" style="height: 45px; width:45px;">
                     <h1 class="navbar-brand text-white font-weight-bold mt-2" href="{{ url('/') }}">
                         UPOCOSMETIC
                     </h1>
@@ -63,7 +63,7 @@
                             <a class="nav-link text-white" href="{{route('productos')}}">{{ __('Productos') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ url('/cart') }}">{{ __('Carrito') }}</a>
+                            <a class="nav-link text-white" href="{{route('cart')}}">{{ __('Carrito') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ url('/favoritos') }}">{{ __('Favoritos') }}</a>
@@ -72,7 +72,7 @@
                             <a class="nav-link text-white" href="{{ url('/usuario') }}">{{ __('Perfil') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ url('/Dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
+                            <a class="nav-link text-white" href="{{ url('/dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">
                             <select class="form-control" id="language-selector">
@@ -97,14 +97,14 @@
         <div class="col-4 d-flex justify-content-center">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503Z"/>
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503Z" />
                 </svg>
-             2023 UPOCOSMETIC
+                2023 UPOCOSMETIC
             </span>
         </div>
         <div class="col-4 text-end">
             <span>
-             SIGUENOS EN:
+                SIGUENOS EN:
             </span>
         </div>
         <div class="col-1 d-flex justify-content-center">

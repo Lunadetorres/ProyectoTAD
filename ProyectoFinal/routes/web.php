@@ -75,17 +75,17 @@ Route::get('/dashboard', function () {
 
 Route::post('/language/{language}', [LanguageController::class, 'changeLanguage'])->name('language.change');
 
-Route::get('/{locale?}', function ($locale = null) {
-    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
-        app()->setLocale($locale);
-    }
+// Route::get('/{locale?}', function ($locale = null) {
+//     if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+//         app()->setLocale($locale);
+//     }
 
-    return view('welcome');
-});
+//     return view('cart');
+// });
 
 Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
 
-Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 
 Route::post('/cart/update/{cartItemId}', [CartController::class, 'update'])->name('cart.update');
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Laravel</title>
+    <title>Welcome in best online shop</title>
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -397,7 +397,7 @@
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
             <a href="{{ url('/productos') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Products</a>
-            <a href="{{ url('/cart') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Cart</a>
+            <a href="{{ route('cart') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Cart</a>
             <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</a>
             @else
             <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>

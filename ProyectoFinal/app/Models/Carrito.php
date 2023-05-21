@@ -9,7 +9,6 @@ use App\Models\usuario;
 class Carrito extends Model
 {
     protected $fillable = [
-        'idCarrito',
         'idUsuario'
     ];
 

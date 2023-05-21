@@ -9,12 +9,16 @@ use App\Models\Usuario;
 class favoritos extends Model
 {
     protected $fillable = [
-        'idFavorito',
         'idUsuario',
+        'idProducto'
     ];
 
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'idUsuario');
+    }
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'idProducto');
     }
 }

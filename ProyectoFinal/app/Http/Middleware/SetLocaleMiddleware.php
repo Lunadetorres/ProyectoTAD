@@ -16,6 +16,7 @@ class SetLocaleMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle($request, Closure $next)
     {
         if (Session::has('locale')) {
