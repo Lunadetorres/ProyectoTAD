@@ -5,7 +5,13 @@
 <div class="container">
     <h1 class="text-center mb-3" style="color:#88389c;">TUS PRODUCTOS FAVORITOS</h1>
     @if(session()->has('success'))
-        <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+    @endif
+    @if(session()->has('fail'))
+    <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+    @endif
+    @if(session()->has('success'))
+    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
     @endif
     <div class="row ">
         @foreach ($Productosfavoritos as $productosfavoritos)

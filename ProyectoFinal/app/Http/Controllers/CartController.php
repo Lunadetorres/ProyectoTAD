@@ -36,7 +36,6 @@ class CartController extends Controller
 
         $cart = Carrito::where('idUsuario', '=', $userId)->get()->first();
 
-
         $productsInCard = ArticulosCarrito::where('idCarrito', '=', $cart->id)->where('idProducto', '=', $product->id)->get();
 
         if ($productsInCard->count() <= 1) {
@@ -152,12 +151,9 @@ class CartController extends Controller
         foreach ($cartItems as $item) {
             $product = Producto::where('id', '=', $item['idProducto'])->first();
             array_push($products, $product);
-            // dd($product);
             $totalItems += $item['cantidad'];
             $totalPrice += $item['cantidad'] * $product->precio;
         }
-
-        // dd($totalItems, $totalPrice);
 
         return view('cart', compact('cartItems', 'totalItems', 'totalPrice', 'products'));
     }

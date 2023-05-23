@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h1>Confirmación de Compra</h1>
+    <h1>Todos los productos pedidos</h1>
     <div class="row">
         <div class="col-md-8">
-            <h2>Detalles del Pedido</h2>
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">Pedido</th>
                         <th scope="col">Producto</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio Unitario</th>
@@ -18,10 +18,11 @@
                 <tbody>
                     @foreach($items as $item)
                     <tr>
-                        <td>{{ $item->producto->nombre }}</td>
+                        <td>{{ $item->idPedido }}</td>
+                        <td>{{ $item->idProducto }}</td>
                         <td>{{ $item->cantidad }}</td>
-                        <td>${{ $item->producto->precio }}</td>
                         <td>${{ $item->precio }}</td>
+                        <td>${{ $item->precio * $item->cantidad}}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -41,12 +42,6 @@
                     </tr>
                 </tbody>
             </table>
-            <form action="{{ route('checkout.process') }}" method="POST">
-                @csrf
-                <button href="{{ route('checkout.index') }}" type="button " class="btn btn-block text-white"  style="background-color:#88389c; ">
-                    {{ __('Pagar') }}
-                </button>
-            </form>
         </div>
     </div>
 </div>

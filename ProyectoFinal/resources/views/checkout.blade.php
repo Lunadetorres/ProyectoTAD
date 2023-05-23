@@ -3,15 +3,21 @@
 @section('content')
 <div class="container">
     <h1 class="text-center" style="color:#88389c;">Checkout</h1>
+    @if(session()->has('success'))
+    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+    @endif
+    @if(session()->has('fail'))
+    <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+    @endif
     <form method="POST" action="{{ route('checkout.process') }}">
         @csrf
         <div class="form-group col-lg-4 mb-3">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
         </div>
         <div class="form-group col-lg-4 mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" required>
         </div>
         <div class="form-group col-lg-4 mb-3">
             <label for="address">Dirección</label>
@@ -41,13 +47,14 @@
             <label for="card-cvc">CVC</label>
             <input type="text" class="form-control" id="card-cvc" name="card-cvc" required>
         </div>
-        <button type="submit" class="bg btn text-white"  style="background-color:#88389c; ">
+        <button type="submit" class="bg btn text-white" style="background-color:#88389c; ">
             <div class="d-flex justify-content-center">
                 <p class="h5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
                         <path fill="#50D51A" d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                         <path fill="#50D51A" d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
                     </svg>
-                    {{ __('Pagar') }}</p>
+                    {{ __('Pagar') }}
+                </p>
             </div>
         </button>
     </form>

@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
     <h1>Carrito de compras</h1>
+
+    @if(session()->has('success'))
+    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+    @endif
+    @if(session()->has('fail'))
+    <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+    @endif
+
     <span class="badge badge-pill badge-primary">{{ count($products) }}</span>
 
     <table class="table">

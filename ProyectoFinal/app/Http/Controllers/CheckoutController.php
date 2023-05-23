@@ -8,40 +8,76 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\ArticulosPedido;
 use App\Models\Pedido;
+use App\Models\ArticulosCarrito;
+use App\Models\Producto;
+use App\Models\User;
 
 class CheckoutController extends Controller
 {
     public function index()
     {
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $user = Auth::user();
 
-        $cart = session()->get('cart');
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
+        }
+
+        $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get()->first();
 
         if (!$cart) {
-            $cart = [];
+            return redirect()->back()->with('fail', 'Card dont exist');
+        }
+
+        $productsInCard = ArticulosCarrito::where('idCarrito', '=', $cart->id)->get();
+
+        if ($productsInCard->count() == 0) {
+            return redirect()->back()->with('fail', 'Card is empty');
         }
 
         $cartItems = 0;
         $totalItems = 0;
         $totalPrice = 0;
 
-        foreach ($cart as $item) {
+        foreach ($productsInCard as $item) {
+            $product = Producto::where('id', '=', $item['idProducto'])->first();
             $totalItems += $item['cantidad'];
-            $totalPrice += $item['cantidad'] * $item['precio'];
+            $totalPrice += $item['cantidad'] * $product->precio;
         }
 
-        return view('checkout', compact('cartItems', 'totalPrice', 'totalItems'));
+        return view('checkout', compact('cartItems', 'totalPrice', 'totalItems', 'user'));
     }
 
     public function process(Request $request)
     {
-        $user = Auth::user();
-        $cart = session()->get('cart');
-        $cartItems = array_values($cart);
-        $totalPrice = collect($cartItems)->sum(function ($item) {
-            return $item['precio'] * $item['cantidad'];
-        });
-        $totalItems = collect($cartItems)->sum('cantidad');
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $user = Auth::user();
 
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
+        }
+
+        $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get()->first();
+
+        if (!$cart) {
+            return redirect()->back()->with('fail', 'Card is empty');
+        }
+
+        $cartItems = ArticulosCarrito::where('idCarrito', '=', $cart->id)->get();
+        $totalPrice = 0;
+        $totalItems = collect($cartItems)->sum('cantidad');
         // Create a new order
         $pedido = new Pedido();
         $pedido->idUsuario = $user->id;
@@ -51,16 +87,22 @@ class CheckoutController extends Controller
 
         // Add items to the order
         foreach ($cartItems as $id => $cartItem) {
+            $product = Producto::where('id', '=', $cartItem['idProducto'])->first();
+            $totalPrice += $cartItem['cantidad'] * $product->precio;
             $articuloPedido = new ArticulosPedido();
             $articuloPedido->idPedido = $pedido->id;
-            $articuloPedido->idProducto = $cartItem['productId'];
+            $articuloPedido->idProducto = $cartItem['idProducto'];
             $articuloPedido->cantidad = $cartItem['cantidad'];
-            $articuloPedido->precio = $cartItem['precio'];
+            $articuloPedido->precio = $product->precio;
             $articuloPedido->save();
         }
 
+        ArticulosCarrito::destroy($cartItems);
+        ArticulosCarrito::destroy($cart);
+
         // Clear the cart
         session()->forget('cart');
+
         $pedidoId = $pedido->id;
 
         return redirect()->route('checkout.success', compact('pedidoId', 'totalPrice'));
@@ -73,30 +115,45 @@ class CheckoutController extends Controller
 
     public function confirmation(Request $request)
     {
-        // Retrieve the user's cart from the session
-        $cart = session()->get('cart');
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $user = Auth::user();
 
-        // Create a new order for the user
-        $order = Pedido::create([
-            'idUsuario' => auth()->user()->id,
-            'estado' => 'Pendiente',
-            'cantidadTotal' => $request->input('total')
-        ]);
-
-        // Loop through the items in the cart and add them to the order
-        foreach ($cart as $item) {
-            ArticulosPedido::create([
-                'idPedido' => $order->id,
-                'idProducto' => $item['id'],
-                'cantidad' => $item['cantidad'],
-                'precio' => $item['precio']
-            ]);
+            // Continue with your logic
+            if ($userId == null) {
+                return redirect()->back()->with('fail', 'User not registered');
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect()->back()->with('fail', 'User not authenticated');
         }
 
-        // Clear the user's cart from the session
-        session()->forget('cart');
+        $user = User::find($userId);
+
+        $order = Pedido::where('idUsuario', '=', $userId)->distinct()->get();
+
+        if ($order->count() == 0) {
+            return redirect()->back()->with('fail', 'User dont have orders');
+        }
+
+        $pedidosIds = $order->pluck('id')->toArray();
+
+        $items = ArticulosPedido::whereIn('idPedido', $pedidosIds)->get();
+
+        $totalItems = collect($items)->sum('cantidad');
+
+        $totalPrice = 0;
+
+        foreach ($items as $item) {
+            $cantidad = $item['cantidad'];
+            $precio = $item['precio'];
+
+            $subtotal = $cantidad * $precio;
+            $totalPrice += $subtotal;
+        }
+
 
         // Render the confirmation view
-        return view('checkout.confirmation', compact('order'));
+        return view('checkout-comfirmation', compact('order', 'items', 'totalItems', 'totalPrice'));
     }
 }

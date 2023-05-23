@@ -97,7 +97,7 @@ Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('
 
 Route::get('/checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
 
-Route::get('/checkout/success{pedidoId}{totalPrice}', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/success/{pedidoId}/{totalPrice}', [CheckoutController::class, 'success'])->name('checkout.success');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/crear-producto', [ProductosController::class, 'create'])->name('admin.crear-producto');
