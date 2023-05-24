@@ -52,6 +52,7 @@ class FavoritosController extends Controller
         $id = Auth::user()->id;
         $idProductos = favoritos::select('idProducto')->where('idUsuario', '=', $id)->distinct()->get()->pluck('idProducto')->toArray();
         $Productosfavoritos = Producto::whereIn('id', $idProductos)->get();
+        
         return view('favoritos', compact('Productosfavoritos'));
     }
 

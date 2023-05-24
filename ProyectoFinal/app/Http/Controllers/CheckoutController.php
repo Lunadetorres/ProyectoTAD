@@ -133,7 +133,7 @@ class CheckoutController extends Controller
         $order = Pedido::where('idUsuario', '=', $userId)->distinct()->get();
 
         if ($order->count() == 0) {
-            return redirect()->back()->with('fail', 'User dont have orders');
+            return redirect()->back()->with('fail', 'No tiene ningún pedido');
         }
 
         $pedidosIds = $order->pluck('id')->toArray();

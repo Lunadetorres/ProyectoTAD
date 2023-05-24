@@ -1,8 +1,14 @@
-@extends('template')
+@extends('template-Admin')
 
 @section('content')
 <div class="container">
     <h1>Todos los productos pedidos</h1>
+    @if(session()->has('success'))
+    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+    @endif
+    @if(session()->has('fail'))
+    <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+    @endif
     <div class="row">
         <div class="col-md-8">
             <table class="table">

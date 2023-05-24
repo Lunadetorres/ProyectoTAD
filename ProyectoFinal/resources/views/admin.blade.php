@@ -1,12 +1,12 @@
-@extends('template')
+@extends('template-Admin')
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-center ">ADMINISTRADOR</h1>
+    <h1 class="text-center ">GESTOR DE PRODUCTOS</h1>
     @if(session()->has('success'))
         <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
     @endif
     <div class="container">
-    <table class="table text-center">
+    <table class="table text-center mt-5">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -62,7 +62,7 @@
     <div class="container col-2">    
         <form action="{{ route('admin.crear-producto') }}" method="GET">
         @csrf 
-            <button class="btn btn-outline btn-success" type="submit" value="Borrar">Crear Producto nuevo</button>    
+            <button class="btn btn-outline btn-success mt-5 mb-2" type="submit" value="Borrar"><strong>Crear Producto</strong></button>    
         </form>    
     </div>
     
