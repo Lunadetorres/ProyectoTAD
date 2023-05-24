@@ -100,6 +100,10 @@ Route::get('/checkout/confirmation', [CheckoutController::class, 'confirmation']
 Route::get('/checkout/success/{pedidoId}/{totalPrice}', [CheckoutController::class, 'success'])->name('checkout.success');
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/index', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('admin/destroy/{id}', [ProductosController::class, 'destroy'])->name('admin.destroy');
     Route::get('admin/crear-producto', [ProductosController::class, 'create'])->name('admin.crear-producto');
     Route::get('admin/store-producto', [ProductosController::class, 'store'])->name('admin.store-producto');
+    Route::get('admin/mostrar-Modificar/{id}', [ProductosController::class, 'mostrarModificar'])->name('admin.mostrarModificar');
+    Route::get('admin/modificar-producto', [ProductosController::class, 'modificar'])->name('admin.modificar');
 });

@@ -8,6 +8,14 @@ use App\Models\Producto;
 
 class AdminController extends Controller
 {
+    public function index()
+    {
+        
+        $productos = Producto::all();
+        return view('admin', compact('productos'));
+
+    }
+    
     public function createProduct()
     {
         return view('crear-producto');
