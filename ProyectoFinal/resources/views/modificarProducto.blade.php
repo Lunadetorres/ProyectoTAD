@@ -8,8 +8,15 @@
                 <div class="card-header">{{ __('Modificar Producto') }}</div>
 
                 <div class="card-body">
-                    <form method="get" action="route{{'admin.modificar'}}" enctype="multipart/form-data">
+                    <form method="get" action="{{route('admin.modificar')}}" >
                         @csrf
+                        <div class="form-group row mb-3">
+                            <label for="id" class="col-md-4 col-form-label text-md-right">{{ __('Id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="id" type="text" class="form-control" name="id" value="{{ $producto->id }}" required autocomplete="id" readonly>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -17,6 +24,20 @@
                                 <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $producto->nombre }}" required autofocus>
 
                                 @error('nombre')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="categoria" class="col-md-4 col-form-label text-md-right">{{ __('Categoría') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="categoria" type="text" class="form-control @error('categoria') is-invalid @enderror" name="categoria" value="{{ $producto->categoria }}" required autofocus>
+
+                                @error('categoria')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -125,11 +125,11 @@ class CartController extends Controller
 
             // Continue with your logic
             if ($userId == null) {
-                return redirect()->back()->with('fail', 'User not registered');
+                return redirect()->back()->with('fail', 'Usuario no registrado');
             }
         } else {
             // Handle the case when the user is not authenticated
-            return redirect()->back()->with('fail', 'User not authenticated');
+            return redirect()->back()->with('fail', 'Usuario no autentificado');
         }
 
         $cart = Carrito::where('idUsuario', '=', $userId)->distinct()->get()->first();

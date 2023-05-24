@@ -10,9 +10,6 @@
     @if(session()->has('fail'))
     <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
     @endif
-    @if(session()->has('success'))
-    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
-    @endif
     <div class="row ">
         @foreach ($Productosfavoritos as $productosfavoritos)
         <div class="col-sm-3 mb-5 border-0">

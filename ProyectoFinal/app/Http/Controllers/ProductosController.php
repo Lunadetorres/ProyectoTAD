@@ -118,35 +118,35 @@ class ProductosController extends Controller
 
     public function modificar(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'descripcionBreve' => 'required',
-            'descripcionGrande' => 'required',
-            'precio' => 'required|numeric',
-            'stock' => 'required|integer',
-            'imagenUrl' => 'nullable|url',
-            'categoria' => 'required',
-            'descuento' => 'descuento',
+        //$request->validate([
+        //    'nombre' => 'required',
+        //    'descripcionBreve' => 'required',
+        //    'descripcionGrande' => 'required',
+         //   'precio' => 'required|numeric',
+         //   'stock' => 'required|integer',
+         //   'imagenUrl' => 'nullable|url',
+         //   'categoria' => 'required',
+         //   'descuento' => 'descuento',
 
-        ]);      
+        //]);      
         
         $datosProducto = request()->except('_token');
 
-        $producto = Producto::where('id', '=', $datosProducto['id'])->get()->first();
+        $producto = Producto::where('id', '=', $request->id)->get()->first();
         
         if ($producto != null) {
-            $producto->nombre = $datosProducto['nombre'];
-            $producto->descripcionBreve = $datosProducto['descripcionBreve'];
-            $producto->descripcionGrande = $datosProducto['descripcionGrande'];
-            $producto->precio = $datosProducto['precio'];
-            $producto->stock = $datosProducto['stock'];
-            $producto->imagenUrl = $datosProducto['imagenUrl'];
-            $producto->categoria = $datosProducto['categoria'];
-            $producto->descuento = $datosProducto['descuento'];
+           $producto->nombre = $request->nombre;
+            $producto->descripcionBreve = $request->descripcionBreve;
+            $producto->descripcionGrande = $request->descripcionGrande;
+            $producto->precio = $request->precio;
+            $producto->stock = $request->stock;
+            $producto->imagenUrl = $request->imagenUrl;
+            $producto->categoria = $request->categoria;
+            $producto->descuento = $request->descuento;
             $producto->save();
         }
 
-        return view('admin.index')->with('success', 'Producto modificado con éxito');
+        return redirect()->route('admin.index')->with('success', 'Producto modificado con éxito');
         
     }
 
