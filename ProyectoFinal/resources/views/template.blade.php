@@ -69,6 +69,9 @@
                             <a class="nav-link text-white" href="{{ url('/favoritos') }}">{{ __('Favoritos') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('checkout.confirmation') }}">{{ __('Pedidos') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-white" href="{{ url('/usuario') }}">{{ __('Perfil') }}</a>
                         </li>
                         <li class="nav-item">

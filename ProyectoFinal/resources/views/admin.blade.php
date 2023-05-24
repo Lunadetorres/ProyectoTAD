@@ -1,12 +1,15 @@
 @extends('template-Admin')
 @section('content')
-<div class="container mt-5">
+<div class="container mt-1">
     <h1 class="text-center ">GESTOR DE PRODUCTOS</h1>
     @if(session()->has('success'))
         <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
     @endif
+    @if(session()->has('fail'))
+        <div class="alert alert-success text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+    @endif
     <div class="container">
-    <table class="table text-center mt-5">
+    <table class="table text-center mt-2">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -16,6 +19,7 @@
                 <th scope="col">imagen</th>
                 <th scope="col">precio</th>
                 <th scope="col">stock</th>
+                <th scope="col">descuento</th>
                 <th scope="col text-center">Acciones</th>
 
             </tr>
@@ -30,6 +34,7 @@
                 <td><img src="{{ $producto->imagenUrl }}" style="height: 40px; width:40px;" class="img-fluid mb-1" alt="{{ $producto->nombre }}"></td>
                 <td>{{$producto->precio}}</td>
                 <td>{{$producto->stock}}</td>
+                <td>{{$producto->descuento}}</td>
                 <td>
                     <div class="container row">
                         <div class="container col-3 warning">
@@ -62,7 +67,7 @@
     <div class="container col-2">    
         <form action="{{ route('admin.crear-producto') }}" method="GET">
         @csrf 
-            <button class="btn btn-outline btn-success mt-5 mb-2" type="submit" value="Borrar"><strong>Crear Producto</strong></button>    
+            <button class="btn btn-outline btn-success mt-2 mb-2" type="submit" value="Borrar"><strong>Crear Producto</strong></button>    
         </form>    
     </div>
     

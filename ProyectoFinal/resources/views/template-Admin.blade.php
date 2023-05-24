@@ -63,9 +63,6 @@
                             <a class="nav-link text-white" href="{{ url('/usuario') }}">{{ __('Perfil') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('checkout.confirmation') }}">{{ __('Pedidos') }}</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-white" href="{{ url('/dashboard') }}">Dashboard: {{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Modificar Producto') }}</div>
+                <div class="card-header body-lila">{{ __('Modificar Producto') }}</div>
 
                 <div class="card-body">
                     <form method="get" action="{{route('admin.modificar')}}" >
@@ -17,7 +17,7 @@
                                 <input id="id" type="text" class="form-control" name="id" value="{{ $producto->id }}" required autocomplete="id" readonly>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="categoria" class="col-md-4 col-form-label text-md-right">{{ __('Categoría') }}</label>
 
                             <div class="col-md-6">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="descripcionBreve" class="col-md-4 col-form-label text-md-right">{{ __('Descripción breve') }}</label>
 
                             <div class="col-md-6">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="descripcionGrande" class="col-md-4 col-form-label text-md-right">{{ __('Descripción grande') }}</label>
 
                             <div class="col-md-6">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="precio" class="col-md-4 col-form-label text-md-right">{{ __('Precio') }}</label>
 
                             <div class="col-md-6">
@@ -79,7 +79,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="stock" class="col-md-4 col-form-label text-md-right">{{ __('Stock') }}</label>
 
                             <div class="col-md-6">
@@ -93,7 +93,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="descuento" class="col-md-4 col-form-label text-md-right">{{ __('Descuento') }}</label>
 
                             <div class="col-md-6">
@@ -106,7 +106,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row mt-2">
                             <label for="imagenUrl" class="col-md-4 col-form-label text-md-right">{{ __('ImagenUrl') }}</label>
 
                             <div class="col-md-6">
@@ -120,7 +120,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Modificar Producto</button>
+                        <button type="submit" class="btn btn-primary mt-2">Modificar Producto</button>
                     </form>
                 </div>
             </div>

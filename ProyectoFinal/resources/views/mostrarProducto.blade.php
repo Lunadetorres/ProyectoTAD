@@ -4,6 +4,12 @@
 
 <div class="container">
     <h1 class="text-center mb-3" style="color:#88389c;">{{ __('TU COSMÉTICA ONLINE') }}</h1>
+    @if(session()->has('success'))
+    <div class="alert alert-success text-center" role="alert"><strong>{{session('success')}}!</strong></div>
+    @endif
+    @if(session()->has('fail'))
+    <div class="alert alert-danger text-center" role="alert"><strong>{{session('fail')}}!</strong></div>
+    @endif
     <div class="row ">
         <div class="col-sm-6 mb-5 border-0">
             <img src="{{ $producto->imagenUrl }}" style="height: 400px; width:400px;" class="rounded mx-auto d-block" alt="{{ $producto->nombre }}">

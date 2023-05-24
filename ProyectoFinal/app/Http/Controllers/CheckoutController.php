@@ -133,7 +133,7 @@ class CheckoutController extends Controller
         $order = Pedido::where('idUsuario', '=', $userId)->distinct()->get();
 
         if ($order->count() == 0) {
-            return redirect()->back()->with('fail', 'No tiene ningún pedido');
+            return redirect()->route('admin.index')->with('fail', 'No tiene ningún pedido');
         }
 
         $pedidosIds = $order->pluck('id')->toArray();
@@ -155,5 +155,6 @@ class CheckoutController extends Controller
 
         // Render the confirmation view
         return view('checkout-comfirmation', compact('order', 'items', 'totalItems', 'totalPrice'));
+    
     }
 }
