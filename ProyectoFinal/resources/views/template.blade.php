@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-md body-lila  shadow-sm">
             <div class="container">
                 <div>
-                    <img src="images/LOGO.png" class="rounded float-start m-1" style="height: 45px; width:45px;">
+                    <img src="{{URL::asset('/images/LOGO.png')}}" class="rounded float-start m-1" style="height: 45px; width:45px;">
                     <h1 class="navbar-brand text-white font-weight-bold mt-2" href="{{ url('/') }}">
                         UPOCOSMETIC
                     </h1>

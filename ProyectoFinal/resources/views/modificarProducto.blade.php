@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Modificar Producto') }}</div>
 
                 <div class="card-body">
-                    <form method="get" action="route{{'admin.modificar'}}" >
+                    <form method="get" action="route{{'admin.modificar'}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -35,10 +35,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="descripcionLarga" class="col-md-4 col-form-label text-md-right">{{ __('Descripción larga') }}</label>
+                            <label for="descripcionGrande" class="col-md-4 col-form-label text-md-right">{{ __('Descripción grande') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="descripcionLarga" class="form-control " name="descripcionLarga" required>{{  $producto->descripcionLarga }}</textarea>
+                                <textarea id="descripcionGrande" class="form-control " name="descripcionGrande" required>{{  $producto->descripcionGrande }}</textarea>
 
                                
                             </div>
@@ -89,7 +89,7 @@
                             <label for="imagenUrl" class="col-md-4 col-form-label text-md-right">{{ __('ImagenUrl') }}</label>
 
                             <div class="col-md-6">
-                                <input id="imagenUrl" type="text" class="form-control @error('imagenUrl') is-invalid @enderror" name="imagenUrl" value="{{ old('imagenUrl') }}" required autofocus>
+                                <input id="imagenUrl" type="text" class="form-control @error('imagenUrl') is-invalid @enderror" name="imagenUrl" value="{{ $producto->imagenUrl}}" required autofocus>
 
                                 @error('imagenUrl')
                                 <span class="invalid-feedback" role="alert">
